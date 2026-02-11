@@ -1,0 +1,843 @@
+[
+    {
+        "id": "1f34c0d0277311da",
+        "type": "tab",
+        "label": "Flux 12",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "a0c5fe2008729928",
+        "type": "mqtt in",
+        "z": "1f34c0d0277311da",
+        "name": "",
+        "topic": "pico/data",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "0c225d18e53a365b",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 360,
+        "y": 220,
+        "wires": [
+            [
+                "31aa995a7f87fdd4",
+                "c986648737cf9f69",
+                "df85df0933715295",
+                "6aaf56adfc2ed253",
+                "433fbf1652a44c58",
+                "a5d8a26736908a32"
+            ]
+        ]
+    },
+    {
+        "id": "31aa995a7f87fdd4",
+        "type": "function",
+        "z": "1f34c0d0277311da",
+        "name": "temperature",
+        "func": "var temp = msg.payload.temperature;\nreturn {payload : temp};",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 570,
+        "y": 220,
+        "wires": [
+            [
+                "8515ad04a7cf2482",
+                "4190ebd09dd41508",
+                "c2df6d0da7aa6386"
+            ]
+        ]
+    },
+    {
+        "id": "c986648737cf9f69",
+        "type": "function",
+        "z": "1f34c0d0277311da",
+        "name": "humidity",
+        "func": "var hum = msg.payload.humidity;\nreturn {payload : hum};",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 560,
+        "y": 280,
+        "wires": [
+            [
+                "12a1a806e2b072c3",
+                "7db9d1a5cd5e3dbd",
+                "7dbbf9867e22b9e9"
+            ]
+        ]
+    },
+    {
+        "id": "df85df0933715295",
+        "type": "function",
+        "z": "1f34c0d0277311da",
+        "name": "light",
+        "func": "var light = msg.payload.light;\nreturn {payload : light};",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 550,
+        "y": 340,
+        "wires": [
+            [
+                "36fac01914092c7a",
+                "94e814f0b570a262",
+                "5efa59b7c3642448",
+                "29acf882a441634a"
+            ]
+        ]
+    },
+    {
+        "id": "6aaf56adfc2ed253",
+        "type": "function",
+        "z": "1f34c0d0277311da",
+        "name": "gaz",
+        "func": "var gaz = msg.payload.gaz;\nreturn {payload : gaz};",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 550,
+        "y": 400,
+        "wires": [
+            [
+                "030c16e45b67227e",
+                "b6b789693367a42d",
+                "0bf54c555f829289"
+            ]
+        ]
+    },
+    {
+        "id": "8515ad04a7cf2482",
+        "type": "ui_gauge",
+        "z": "1f34c0d0277311da",
+        "name": "",
+        "group": "d98f89b1fbc946f9",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Temperature",
+        "label": "C",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 850,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "12a1a806e2b072c3",
+        "type": "ui_gauge",
+        "z": "1f34c0d0277311da",
+        "name": "",
+        "group": "d98f89b1fbc946f9",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Humidity",
+        "label": "%",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 820,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "94e814f0b570a262",
+        "type": "ui_chart",
+        "z": "1f34c0d0277311da",
+        "name": "",
+        "group": "d98f89b1fbc946f9",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "label": "Light",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "100",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 930,
+        "y": 380,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "36fac01914092c7a",
+        "type": "ui_gauge",
+        "z": "1f34c0d0277311da",
+        "name": "",
+        "group": "d98f89b1fbc946f9",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Light",
+        "label": "%",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 810,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "030c16e45b67227e",
+        "type": "ui_gauge",
+        "z": "1f34c0d0277311da",
+        "name": "",
+        "group": "d98f89b1fbc946f9",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "gaz",
+        "label": "%",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 790,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "7db9d1a5cd5e3dbd",
+        "type": "ui-gauge",
+        "z": "1f34c0d0277311da",
+        "name": "Humidity",
+        "group": "e22278df571455cf",
+        "order": 1,
+        "value": "payload",
+        "valueType": "msg",
+        "width": 6,
+        "height": 4,
+        "gtype": "gauge-half",
+        "gstyle": "needle",
+        "title": "Humidity",
+        "alwaysShowTitle": false,
+        "floatingTitlePosition": "top-left",
+        "units": "%",
+        "icon": "",
+        "prefix": "",
+        "suffix": "",
+        "segments": [
+            {
+                "from": "0",
+                "color": "#5cd65c",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "40",
+                "color": "#ffc800",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "100",
+                "color": "#ea5353",
+                "text": "",
+                "textType": "label"
+            }
+        ],
+        "min": 0,
+        "max": "150",
+        "sizeThickness": 16,
+        "sizeGap": 4,
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": false,
+        "className": "",
+        "x": 820,
+        "y": 240,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "5efa59b7c3642448",
+        "type": "ui-gauge",
+        "z": "1f34c0d0277311da",
+        "name": "Light",
+        "group": "1dad8ff2a21c6403",
+        "order": 1,
+        "value": "payload",
+        "valueType": "msg",
+        "width": 6,
+        "height": 4,
+        "gtype": "gauge-half",
+        "gstyle": "needle",
+        "title": "Light",
+        "alwaysShowTitle": false,
+        "floatingTitlePosition": "top-left",
+        "units": "%",
+        "icon": "",
+        "prefix": "",
+        "suffix": "",
+        "segments": [
+            {
+                "from": "0",
+                "color": "#5cd65c",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "40",
+                "color": "#000000",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "100",
+                "color": "#ea5353",
+                "text": "",
+                "textType": "label"
+            }
+        ],
+        "min": 0,
+        "max": "150",
+        "sizeThickness": 16,
+        "sizeGap": 4,
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": false,
+        "className": "",
+        "x": 950,
+        "y": 340,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b6b789693367a42d",
+        "type": "ui-gauge",
+        "z": "1f34c0d0277311da",
+        "name": "Gaz",
+        "group": "169c51ce62d5f2f7",
+        "order": 1,
+        "value": "payload",
+        "valueType": "msg",
+        "width": 6,
+        "height": 4,
+        "gtype": "gauge-half",
+        "gstyle": "needle",
+        "title": "Gaz",
+        "alwaysShowTitle": false,
+        "floatingTitlePosition": "top-left",
+        "units": "%",
+        "icon": "",
+        "prefix": "",
+        "suffix": "",
+        "segments": [
+            {
+                "from": "0",
+                "color": "#5cd65c",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "40",
+                "color": "#ffc800",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "100",
+                "color": "#ea5353",
+                "text": "",
+                "textType": "label"
+            }
+        ],
+        "min": 0,
+        "max": "150",
+        "sizeThickness": 16,
+        "sizeGap": 4,
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": false,
+        "className": "",
+        "x": 790,
+        "y": 460,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4190ebd09dd41508",
+        "type": "ui-gauge",
+        "z": "1f34c0d0277311da",
+        "name": "",
+        "group": "3160d11f50d3cc95",
+        "order": 1,
+        "value": "payload",
+        "valueType": "msg",
+        "width": 6,
+        "height": 4,
+        "gtype": "gauge-half",
+        "gstyle": "needle",
+        "title": "Temperature",
+        "alwaysShowTitle": false,
+        "floatingTitlePosition": "top-left",
+        "units": "C",
+        "icon": "",
+        "prefix": "",
+        "suffix": "",
+        "segments": [
+            {
+                "from": "0",
+                "color": "#5cd65c",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "40",
+                "color": "#ffc800",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "100",
+                "color": "#ea5353",
+                "text": "",
+                "textType": "label"
+            }
+        ],
+        "min": 0,
+        "max": "150",
+        "sizeThickness": 16,
+        "sizeGap": 4,
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": false,
+        "className": "",
+        "x": 870,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "433fbf1652a44c58",
+        "type": "debug",
+        "z": "1f34c0d0277311da",
+        "name": "debug 33",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 580,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "c2df6d0da7aa6386",
+        "type": "influxdb out",
+        "z": "1f34c0d0277311da",
+        "influxdb": "39b34e514b901813",
+        "name": "",
+        "measurement": "temperature",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "database",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "",
+        "org": "projects",
+        "bucket": "makerLabs",
+        "x": 950,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "7dbbf9867e22b9e9",
+        "type": "influxdb out",
+        "z": "1f34c0d0277311da",
+        "influxdb": "39b34e514b901813",
+        "name": "",
+        "measurement": "humidity",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "database",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "",
+        "org": "projects",
+        "bucket": "makerLabs",
+        "x": 1060,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "29acf882a441634a",
+        "type": "influxdb out",
+        "z": "1f34c0d0277311da",
+        "influxdb": "39b34e514b901813",
+        "name": "",
+        "measurement": "Light",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "database",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "",
+        "org": "projects",
+        "bucket": "makerLabs",
+        "x": 1070,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "0bf54c555f829289",
+        "type": "influxdb out",
+        "z": "1f34c0d0277311da",
+        "influxdb": "39b34e514b901813",
+        "name": "",
+        "measurement": "gaz",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "database",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "",
+        "org": "projects",
+        "bucket": "makerLabs",
+        "x": 850,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "d7924da138606eb3",
+        "type": "function",
+        "z": "1f34c0d0277311da",
+        "name": "Format Telegram Message",
+        "func": "// Replace with your actual bot token and chat ID\nconst botToken = \"8273239348:AAHApjrwq_1X-dC1Hqfv-3XmsgzU-zM5IZI\";\nconst chatId = \"1132007799\";\n\nmsg.method = \"POST\";\nmsg.url = `https://api.telegram.org/bot${botToken}/sendMessage`;\nmsg.headers = {\n    \"Content-Type\": \"application/json\"\n};\n\nmsg.payload = {\n    chat_id: chatId,\n    text: msg.payload\n};\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 700,
+        "y": 580,
+        "wires": [
+            [
+                "b1d65b8ddaf80b48"
+            ]
+        ]
+    },
+    {
+        "id": "b1d65b8ddaf80b48",
+        "type": "http request",
+        "z": "1f34c0d0277311da",
+        "name": "Send Telegram Message",
+        "method": "use",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 990,
+        "y": 580,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a5d8a26736908a32",
+        "type": "function",
+        "z": "1f34c0d0277311da",
+        "name": "function 19",
+        "func": "var temp = msg.payload.temperature;\nif (temp > 50){\n    return{payload : \"ejri ray khlet\"} ;\n}",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 430,
+        "y": 560,
+        "wires": [
+            [
+                "d7924da138606eb3"
+            ]
+        ]
+    },
+    {
+        "id": "0c225d18e53a365b",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "broker.emqx.io",
+        "port": 1883,
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "d98f89b1fbc946f9",
+        "type": "ui_group",
+        "name": "Default",
+        "tab": "042e7689eb2f6abd",
+        "order": 1,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "e22278df571455cf",
+        "type": "ui-group",
+        "name": "Humidity",
+        "page": "1d4c82954dd4acee",
+        "width": 6,
+        "height": 1,
+        "order": 3,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "1dad8ff2a21c6403",
+        "type": "ui-group",
+        "name": "Light",
+        "page": "1d4c82954dd4acee",
+        "width": 6,
+        "height": 1,
+        "order": 2,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "169c51ce62d5f2f7",
+        "type": "ui-group",
+        "name": "Gaz",
+        "page": "1d4c82954dd4acee",
+        "width": 6,
+        "height": 1,
+        "order": 1,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "3160d11f50d3cc95",
+        "type": "ui-group",
+        "name": "Temperature",
+        "page": "1d4c82954dd4acee",
+        "width": 6,
+        "height": 1,
+        "order": 4,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "39b34e514b901813",
+        "type": "influxdb",
+        "hostname": "127.0.0.1",
+        "port": 8086,
+        "protocol": "http",
+        "database": "database",
+        "name": "",
+        "usetls": false,
+        "tls": "",
+        "influxdbVersion": "2.0",
+        "url": "http://localhost:8086",
+        "timeout": 10,
+        "rejectUnauthorized": true
+    },
+    {
+        "id": "042e7689eb2f6abd",
+        "type": "ui_tab",
+        "name": "smart house",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "1d4c82954dd4acee",
+        "type": "ui-page",
+        "name": "Smart House",
+        "ui": "9b3fe35be2513d54",
+        "path": "/page3",
+        "icon": "home",
+        "layout": "grid",
+        "theme": "d2dc1a80d76ba14b",
+        "breakpoints": [
+            {
+                "name": "Default",
+                "px": "0",
+                "cols": "3"
+            },
+            {
+                "name": "Tablet",
+                "px": "576",
+                "cols": "6"
+            },
+            {
+                "name": "Small Desktop",
+                "px": "768",
+                "cols": "9"
+            },
+            {
+                "name": "Desktop",
+                "px": "1024",
+                "cols": "12"
+            }
+        ],
+        "order": 1,
+        "className": "",
+        "visible": "true",
+        "disabled": "false"
+    },
+    {
+        "id": "9b3fe35be2513d54",
+        "type": "ui-base",
+        "name": "Smart House",
+        "path": "/dashboard",
+        "appIcon": "",
+        "includeClientData": true,
+        "acceptsClientConfig": [
+            "ui-notification",
+            "ui-control"
+        ],
+        "showPathInSidebar": false,
+        "headerContent": "page",
+        "navigationStyle": "default",
+        "titleBarStyle": "default",
+        "showReconnectNotification": true,
+        "notificationDisplayTime": 1,
+        "showDisconnectNotification": true,
+        "allowInstall": true
+    },
+    {
+        "id": "d2dc1a80d76ba14b",
+        "type": "ui-theme",
+        "name": "Default Theme",
+        "colors": {
+            "surface": "#dec4cb",
+            "primary": "#0094ce",
+            "bgPage": "#eeeeee",
+            "groupBg": "#ffffff",
+            "groupOutline": "#cccccc"
+        },
+        "sizes": {
+            "density": "default",
+            "pagePadding": "12px",
+            "groupGap": "12px",
+            "groupBorderRadius": "20px",
+            "widgetGap": "12px"
+        }
+    }
+]
